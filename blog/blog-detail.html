@@ -68,7 +68,8 @@
         }
 
         .blog-main-content {
-            padding-right: 40px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .blog-featured-image {
@@ -241,49 +242,6 @@
             color: #fff;
         }
 
-        /* Sidebar */
-        .blog-sidebar {
-            padding-left: 30px;
-        }
-
-        .sidebar-widget {
-            background: #f8f9fa;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-        }
-
-        .sidebar-widget-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: #1a1a1a;
-        }
-
-        .popular-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .popular-tag {
-            display: inline-block;
-            padding: 8px 20px;
-            background: #fff;
-            color: #666;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid #e5e5e5;
-        }
-
-        .popular-tag:hover {
-            background: #c9a96e;
-            color: #fff;
-            border-color: #c9a96e;
-        }
-
         /* Comments Section */
         .comments-section {
             margin-top: 60px;
@@ -403,17 +361,6 @@
             background: #a88a5a;
         }
 
-        @media (max-width: 991px) {
-            .blog-main-content {
-                padding-right: 0;
-                margin-bottom: 50px;
-            }
-
-            .blog-sidebar {
-                padding-left: 0;
-            }
-        }
-
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.5rem;
@@ -453,7 +400,7 @@
         <div class="container">
             <div class="row">
                 <!-- Main Blog Content -->
-                <div class="col-lg-8">
+                <div class="col-12">
                     <div class="blog-main-content">
                         <!-- Featured Image -->
                         <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200" alt="Blog Featured Image" class="blog-featured-image">
@@ -602,26 +549,6 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar -->
-                <div class="col-lg-4">
-                    <div class="blog-sidebar">
-                        <!-- Popular Tags Widget -->
-                        <div class="sidebar-widget">
-                            <h3 class="sidebar-widget-title">Popular tags</h3>
-                            <div class="popular-tags">
-                                <a href="#" class="popular-tag">SEO marketing</a>
-                                <a href="#" class="popular-tag">Branding</a>
-                                <a href="#" class="popular-tag">Development</a>
-                                <a href="#" class="popular-tag">Logo Design</a>
-                                <a href="#" class="popular-tag">Design</a>
-                                <a href="#" class="popular-tag">Marketing</a>
-                                <a href="#" class="popular-tag">Agency</a>
-                                <a href="#" class="popular-tag">IT Service</a>
-                            </div>
                         </div>
                     </div>
                 </div>
