@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Blogs - Stravise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200') center/cover no-repeat;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            color: #fff;
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb-nav {
+            background: transparent;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-nav .breadcrumb-item,
+        .breadcrumb-nav .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        .breadcrumb-nav .breadcrumb-item.active {
+            color: #fff;
+        }
+
+        .breadcrumb-nav .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.5);
+            content: "/";
+        }
+
+        /* Blog Grid Section */
+        .blog-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 0;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            position: relative;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-card-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-card-img {
+            transform: scale(1.05);
+        }
+
+        .blog-card-body {
+            padding: 30px;
+        }
+
+        .blog-card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            color: #1a1a1a;
+            min-height: 70px;
+        }
+
+        .blog-card-title a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card-title a:hover {
+            color: #c9a96e;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 0;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .blog-category {
+            display: inline-block;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .blog-date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-left: auto;
+        }
+
+        .blog-percentage {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            color: #1a1a1a;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: #c9a96e;
+            display: inline-block;
+            margin: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Our Blogs</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-nav">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Our Blogs</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Blog Grid Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="row">
+                <!-- Blog Card 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <span class="blog-percentage">24%</span>
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800" alt="Strategic Planning" class="blog-card-img">
+                        <div class="blog-card-body">
+                            <h3 class="blog-card-title">
+                                <a href="strategic-planning.html">Our strategic planning ensures your brand's vision aligns</a>
+                            </h3>
+                            <div class="blog-meta">
+                                <span class="blog-category">Development</span>
+                                <span class="divider"></span>
+                                <span class="blog-date">August 12, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800" alt="Financial Foundation" class="blog-card-img">
+                        <div class="blog-card-body">
+                            <h3 class="blog-card-title">
+                                <a href="financial-foundation.html">How to build your strong financial foundation for business</a>
+                            </h3>
+                            <div class="blog-meta">
+                                <span class="blog-category">Development</span>
+                                <span class="divider"></span>
+                                <span class="blog-date">August 12, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?w=800" alt="Investment Strategies" class="blog-card-img">
+                        <div class="blog-card-body">
+                            <h3 class="blog-card-title">
+                                <a href="investment-strategies.html">Top investment strategies for need to grow your wealth</a>
+                            </h3>
+                            <div class="blog-meta">
+                                <span class="blog-category">Development</span>
+                                <span class="divider"></span>
+                                <span class="blog-date">August 12, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800" alt="Strategic Planning" class="blog-card-img">
+                        <div class="blog-card-body">
+                            <h3 class="blog-card-title">
+                                <a href="strategic-planning-vision.html">Our strategic planning ensures your brand's vision aligns</a>
+                            </h3>
+                            <div class="blog-meta">
+                                <span class="blog-category">Development</span>
+                                <span class="divider"></span>
+                                <span class="blog-date">August 12, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <span class="blog-percentage">70%</span>
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800" alt="Data Driven Decisions" class="blog-card-img">
+                        <div class="blog-card-body">
+                            <h3 class="blog-card-title">
+                                <a href="data-driven-decisions.html">Power of data-driven decisions with Stravise's smart solutions</a>
+                            </h3>
+                            <div class="blog-meta">
+                                <span class="blog-category">Development</span>
+                                <span class="divider"></span>
+                                <span class="blog-date">August 12, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800" alt="Stravise Service Ecosystem" class="blog-card-img">
+                        <div class="blog-card-body">
+                            <h3 class="blog-card-title">
+                                <a href="stravise-service-ecosystem.html">Breaking Down the Stravise Service Eco-system</a>
+                            </h3>
+                            <div class="blog-meta">
+                                <span class="blog-category">Development</span>
+                                <span class="divider"></span>
+                                <span class="blog-date">August 12, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details - Stravise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200') center/cover no-repeat;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            color: #fff;
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb-nav {
+            background: transparent;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-nav .breadcrumb-item,
+        .breadcrumb-nav .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        .breadcrumb-nav .breadcrumb-item.active {
+            color: #fff;
+        }
+
+        .breadcrumb-nav .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.5);
+            content: "/";
+        }
+
+        /* Blog Content Section */
+        .blog-content-section {
+            padding: 80px 0;
+        }
+
+        .blog-main-content {
+            padding-right: 40px;
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .blog-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e5e5;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .blog-meta-info i {
+            color: #c9a96e;
+        }
+
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.3;
+            color: #1a1a1a;
+        }
+
+        .blog-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .blog-section-heading {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 40px 0 20px;
+            color: #1a1a1a;
+        }
+
+        .blog-images-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .blog-images-grid img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .blog-quote {
+            background-color: #f8f9fa;
+            border-left: 4px solid #c9a96e;
+            padding: 30px 40px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .blog-quote::before {
+            content: '\201C';
+            font-size: 4rem;
+            color: #c9a96e;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            line-height: 1;
+        }
+
+        .blog-quote-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        .blog-quote-author {
+            display: inline-block;
+            background: #c9a96e;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 30px;
+        }
+
+        .blog-tags-share {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .blog-tags {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .blog-tags strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .tag-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #f8f9fa;
+            color: #666;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag-badge:hover {
+            background: #c9a96e;
+            color: #fff;
+        }
+
+        .blog-share {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .blog-share strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .social-share-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f8f9fa;
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-share-btn:hover {
+            background: #c9a96e;
+            color: #fff;
+        }
+
+        /* Sidebar */
+        .blog-sidebar {
+            padding-left: 30px;
+        }
+
+        .sidebar-widget {
+            background: #f8f9fa;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .sidebar-widget-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+        }
+
+        .popular-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .popular-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #fff;
+            color: #666;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e5e5;
+        }
+
+        .popular-tag:hover {
+            background: #c9a96e;
+            color: #fff;
+            border-color: #c9a96e;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #e5e5e5;
+        }
+
+        .comments-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 35px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .comment-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .comment-content {
+            flex: 1;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .comment-date {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .comment-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .comment-reply-btn {
+            color: #c9a96e;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .comment-reply-btn:hover {
+            color: #a88a5a;
+        }
+
+        /* Comment Form */
+        .comment-form-section {
+            margin-top: 50px;
+        }
+
+        .comment-form-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .comment-form .form-control {
+            border: 1px solid #e5e5e5;
+            padding: 15px 20px;
+            font-size: 0.95rem;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .comment-form textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .comment-form .form-control:focus {
+            border-color: #c9a96e;
+            box-shadow: 0 0 0 0.2rem rgba(201, 169, 110, 0.15);
+        }
+
+        .submit-btn {
+            background: #c9a96e;
+            color: #fff;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #a88a5a;
+        }
+
+        @media (max-width: 991px) {
+            .blog-main-content {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+
+            .blog-sidebar {
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .blog-title {
+                font-size: 1.8rem;
+            }
+
+            .blog-images-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-tags-share {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Blog Details</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-nav">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Blog Content Section -->
+    <section class="blog-content-section">
+        <div class="container">
+            <div class="row">
+                <!-- Main Blog Content -->
+                <div class="col-lg-8">
+                    <div class="blog-main-content">
+                        <!-- Featured Image -->
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200" alt="Blog Featured Image" class="blog-featured-image">
+
+                        <!-- Blog Meta Info -->
+                        <div class="blog-meta-info">
+                            <span><i class="far fa-calendar"></i> August 12, 2025</span>
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                            <span><i class="far fa-folder"></i> Business Consultancy</span>
+                        </div>
+
+                        <!-- Blog Title -->
+                        <h1 class="blog-title">Our strategic planning ensures your brand's vision aligns</h1>
+
+                        <!-- Blog Content -->
+                        <p class="blog-text">
+                            With smart assistance like Alexa, Siri and Google Assistant now integrated into daily life, voice search is booming.
+                            Consumers expect quick, hands-free searches – and that means optimizing your content for conversational queries.
+                            Modern search strategies need to focus on long-tail and natural language keywords. Also, consider optimizing your
+                            content for featured snippets that power voice results.
+                        </p>
+
+                        <p class="blog-text">
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+                            layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+                            using 'Content here, content here'.
+                        </p>
+
+                        <!-- Blog Images Grid -->
+                        <div class="blog-images-grid">
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" alt="Blog Image 1">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600" alt="Blog Image 2">
+                        </div>
+
+                        <p class="blog-text">
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+                            layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+                            using 'Content here, content here'.
+                        </p>
+
+                        <!-- Quote Block -->
+                        <div class="blog-quote">
+                            <p class="blog-quote-text">
+                                Communicate your brand's mission clearly and authentically. Highlight sustainability efforts,
+                                ethical sourcing, or community impact initiatives.
+                            </p>
+                            <span class="blog-quote-author">Guy Hawkins</span>
+                        </div>
+
+                        <!-- Section Heading -->
+                        <h2 class="blog-section-heading">Purpose-Driven and Sustainable</h2>
+
+                        <p class="blog-text">
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+                            layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+                            using 'Content here, content here'.
+                        </p>
+
+                        <!-- Section Heading -->
+                        <h2 class="blog-section-heading">Privacy as a Competitive Advantage</h2>
+
+                        <p class="blog-text">
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+                            layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+                            using 'Content here, content here'.
+                        </p>
+
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200" alt="Blog Content Image" class="blog-featured-image">
+
+                        <p class="blog-text">
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
+                            layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+                            using 'Content here, content here'.
+                        </p>
+
+                        <!-- Tags and Share -->
+                        <div class="blog-tags-share">
+                            <div class="blog-tags">
+                                <strong>Tags:</strong>
+                                <a href="#" class="tag-badge">Development</a>
+                                <a href="#" class="tag-badge">Engineering</a>
+                                <a href="#" class="tag-badge">Creation</a>
+                            </div>
+                            <div class="blog-share">
+                                <strong>Share:</strong>
+                                <a href="#" class="social-share-btn"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-share-btn"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-share-btn"><i class="fab fa-behance"></i></a>
+                                <a href="#" class="social-share-btn"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Comments Section -->
+                        <div class="comments-section">
+                            <h3 class="comments-title">Comments (03)</h3>
+
+                            <!-- Comment 1 -->
+                            <div class="comment-item">
+                                <img src="https://i.pravatar.cc/150?img=5" alt="Mariya D'soza" class="comment-avatar">
+                                <div class="comment-content">
+                                    <div class="comment-header">
+                                        <h4 class="comment-author">Mariya D'soza</h4>
+                                        <a href="#" class="comment-reply-btn"><i class="fas fa-reply"></i> REPLY</a>
+                                    </div>
+                                    <p class="comment-date">18 Aug, 2025 08:25pm</p>
+                                    <p class="comment-text">
+                                        Be upfront about how you collect, use, and store customer data. Make policies simple, secure,
+                                        and user-friendly. Trust will be one of your biggest assets in 2025.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Comment 2 -->
+                            <div class="comment-item">
+                                <img src="https://i.pravatar.cc/150?img=12" alt="Michael Philips" class="comment-avatar">
+                                <div class="comment-content">
+                                    <div class="comment-header">
+                                        <h4 class="comment-author">Michael Philips</h4>
+                                        <a href="#" class="comment-reply-btn"><i class="fas fa-reply"></i> REPLY</a>
+                                    </div>
+                                    <p class="comment-date">18 Aug, 2025 08:25pm</p>
+                                    <p class="comment-text">
+                                        Customers now interact with brands across dozens of touchpoints: apps, websites, emails,
+                                        in-store visits, and more. The challenge?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comment Form -->
+                        <div class="comment-form-section">
+                            <h3 class="comment-form-title">Leave a Reply</h3>
+                            <form class="comment-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Your Name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea class="form-control" placeholder="Type your message" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="submit-btn">Submit Now</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="blog-sidebar">
+                        <!-- Popular Tags Widget -->
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Popular tags</h3>
+                            <div class="popular-tags">
+                                <a href="#" class="popular-tag">SEO marketing</a>
+                                <a href="#" class="popular-tag">Branding</a>
+                                <a href="#" class="popular-tag">Development</a>
+                                <a href="#" class="popular-tag">Logo Design</a>
+                                <a href="#" class="popular-tag">Design</a>
+                                <a href="#" class="popular-tag">Marketing</a>
+                                <a href="#" class="popular-tag">Agency</a>
+                                <a href="#" class="popular-tag">IT Service</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
